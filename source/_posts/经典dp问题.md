@@ -11,7 +11,7 @@ categories:
 
 思路：dp[i]    状态表示以下标i结尾的子串，属性为该字串的最长上升子序列
 
-```c++
+```cpp
 for(int i=0; i<n ;i++){
     dp[i]=1;
     for(int j=0 ;j<i ;j++)
@@ -32,7 +32,7 @@ for(int i=0; i<n ;i++){
    `dp[i][j]=max(dp[i-1][j-1]+1,dp[i][j])`
 3. 代码
 
-   ```c++
+   ```c
    dp[0][0]=0;
    for(int i=1 ;i<=n ; i++)
         for(int j=1 ;j<=m ;j++){
