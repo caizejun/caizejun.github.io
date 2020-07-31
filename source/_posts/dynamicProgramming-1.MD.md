@@ -1,8 +1,9 @@
 ---
-title: 经典动态规划问题
+title: 经典动态规划问题-1
 data: 2020-7-30
 categories:
 - 算法题
+- 动态规划
 ---
 
 
@@ -32,7 +33,7 @@ for(int i=0; i<n ;i++){
    `dp[i][j]=max(dp[i-1][j-1]+1,dp[i][j])`
 3. 代码
 
-   ```c
+   ```c++
    dp[0][0]=0;
    for(int i=1 ;i<=n ; i++)
         for(int j=1 ;j<=m ;j++){
