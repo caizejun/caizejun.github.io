@@ -1,10 +1,9 @@
 ---
-title: 字符串经典问题-1
+title: string-1
 data: 2020-7-31
-catagories:
+categories:
 - 算法题
 - 字符串
-
 ---
 
 
