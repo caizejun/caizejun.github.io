@@ -93,10 +93,10 @@ index_with_subtitle: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   home: /
-  #about: /about/ || user
-  tags: /tags
-  categories: /categories/
-  archives: /archives/
+  about: /about
+  tags: /tags/ tags
+  categories: /categories
+  archives: /archives
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -104,6 +104,9 @@ menu:
 # Enable/Disable menu icons.
 menu_icons:
   enable: true
+  home: home
+  tags: tages
+  categories: th
 
 
 # ---------------------------------------------------------------
@@ -113,8 +116,8 @@ menu_icons:
 # Schemes
 #scheme: Muse
 #scheme: Mist
-#scheme: Pisces
-scheme: Gemini
+scheme: Pisces
+#scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -241,8 +244,8 @@ post_wordcount:
   #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
   #description: ex. subscribe to my blog by scanning my public wechat account
 
-# Reward
-#reward_comment: Donate comment here
+#Reward
+reward_comment: 乞讨，要恰饭的嘛
 #wechatpay: /images/wechatpay.jpg
 #alipay: /images/alipay.jpg
 #bitcoin: /images/bitcoin.png
@@ -698,7 +701,7 @@ pace_theme: pace-theme-minimal
 canvas_nest: false
 
 # three_waves
-three_waves: false
+three_waves: true
 
 # canvas_lines
 canvas_lines: false
