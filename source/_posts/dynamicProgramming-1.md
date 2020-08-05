@@ -1,9 +1,9 @@
 ---
-title: 经典动态规划问题-1
+title: dp-1
 data: 2020-7-30
 categories:
 - 算法题
-- 动态规划
+- DynamicProgramming
 ---
 
 
