@@ -10,7 +10,7 @@ categories:
 
 ## 哈希表（查询表）
 
-### 数字转罗马数字
+### 罗马数字转罗马数字
 
 ```golang
 
@@ -25,6 +25,33 @@ func intToRoman(num int) string {
         }
     }
     return res
+}
+
+```
+
+### 罗马数字转阿拉伯数字
+
+应该也算双指针吧，pre是当前处理的字符，cur是用来决定对pre的处理
+
+```golang
+
+var table map[string]int = map[string]int{ "V":5, "I":1, "X":10 ,"L":50, "C":100, "D":500, "M":1000,}
+func romanToInt(s string) int {
+    pre, res := 0, 0
+    if len(s) == 0 {
+        return res
+    }
+    pre = table[s[0:1]]
+    for _, c := range s[1:] {
+        cur := table[string(c)]
+        if cur > pre {
+            res -= pre
+        }else{
+            res += pre
+        }
+        pre = cur
+    }
+    return res + pre
 }
 
 ```

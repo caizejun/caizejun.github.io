@@ -7,7 +7,7 @@ categories:
 ---
 
 
-## 1. 回文串
+## 回文串
 
 ### 解决办法1
 
@@ -34,4 +34,27 @@ categories:
 ### 解决办法2
 
 1. 字符串哈希加上二分查找 思路：
-   
+
+## 前缀后缀中间缀之类
+
+### 最长公共前缀
+
+取第一个字符串为标杆，后面依次做比较,如果完全相同，则返回第一个字符
+
+```cpp
+ string longestCommonPrefix(vector<string>strs) {
+       string res ="" ;
+       if ( strs.size() == 0 )
+            return res;
+        for(int i = 0; i < strs[0].size(); i++){
+            char c = strs[0][i];
+            for(int j=1 ; j < strs.size(); j++){
+                if(i==strs[j].size() ||c != strs[j][i])
+                    return strs[0].substr(0,i);
+            }
+        }
+        return strs[0];
+    }
+
+
+```
