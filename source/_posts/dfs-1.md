@@ -1,7 +1,9 @@
 ---
 title: dfs-1
 date: 2020-08-07 11:09:17
-tags: "算法" "搜索"
+tags: 
+- "算法" 
+- "搜索"
 categories:
 - 算法题
 - Search
@@ -40,4 +42,40 @@ func dfs(index int, out, digits string){
         out = out[0 : len(out)-1]
     }
 }
+```
+
+## 括号生成Leetcode22
+
+递归树大概长这样</br>
+
+```c
+                        (
+            ((                      ()
+    (((         (()             ()(     
+((()            (())         ()()
+```
+
+代码：
+
+```golang
+class Solution {
+public:
+    vector<string> res;
+    int  k;
+    vector<string> generateParenthesis(int n) {
+        this -> k = n; 
+        dfs(0,0,"");
+        return res;
+
+    }
+    void dfs(int l, int r ,string out){
+        if(l==k && r==k ){
+            res.push_back(out);
+            return;
+        }
+        if(l < k)dfs(l+1,r,out+'(');
+        if(l > r)dfs(l,r+1,out+')');
+    }
+};
+
 ```

@@ -7,6 +7,45 @@ categories:
 - MathAndBitManipulation
 ---
 
+## 实现除法Leetcode29
+
+不能出现乘除，模运算，实现除法。
+思路： 得到除数的倍数，被除数从最大的倍数开始减，就可以了。
+
+```cpp
+typedef long long LL;
+
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        bool neg = false ;
+        vector<LL> exp ;
+        if((dividend > 0 && divisor < 0) ||(dividend < 0 && divisor > 0)){
+            neg = true;
+        }
+        LL a = abs((LL)dividend), b = abs((LL)divisor), res = 0;
+        for(LL i = b ; i <= a; i += i )
+            exp.push_back(i);
+        for(int i = exp.size()-1; i >= 0; i--){
+            if(a >= exp[i]){
+                a -= exp[i];
+                res += 1LL << i;
+            }
+        }
+        if(neg) res = -res;
+        if(res > INT_MAX || res< INT_MIN)return INT_MAX;
+        return (int)res;
+    }
+};
+
+
+```cpp
+
+
+
+
+
+
 ## 一些特殊的性质
 
 高级语言里，负数mod正数，结果依旧是负数 -1%10=-1, -1234%10=-4；
