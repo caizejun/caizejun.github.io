@@ -1,7 +1,9 @@
 ---
 title: goCobar
 date: 2020-08-06 18:18:53
-tags: go lib
+tags: 
+- go
+- lib
 categories: 
 - golang
 - lib

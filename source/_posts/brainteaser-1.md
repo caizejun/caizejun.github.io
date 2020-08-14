@@ -1,7 +1,9 @@
 ---
 title: 简单模拟
 date: 2020-08-03 09:50:16
-tags: 算法 模拟
+tags: 
+- 算法 
+- 模拟
 categories: 
 - 算法题
 - Trick

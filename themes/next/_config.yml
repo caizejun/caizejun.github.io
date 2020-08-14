@@ -92,11 +92,11 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: / || home
-  about: /about/ || user
-  tags: /tags/ || tags
-  categories: /categories/ || th
-  archives: /archives/ || th
+  home: /
+  about: /about/
+  tags: /tags/
+  categories: /categories/
+  archives: /archives/
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -104,6 +104,13 @@ menu_settings:
   icons: true # 是否显示各个页面的图标
   badges: true # 是否显示分类/标签/归档页的内容量
 # Enable/Disable menu icons.
+menu_icons:
+enable: true
+home: home
+aboute: user
+tags: tags
+categories: th
+archives: th
 
 # ---------------------------------------------------------------
 # Scheme Settings
