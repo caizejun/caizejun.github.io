@@ -6,7 +6,22 @@ categories:
 - DynamicProgramming
 ---
 
+## Leetcode53最大公共子序(连续的)列和
 
+这个最巧妙的是对边界的处理吧，还有怎么用滚动数组
+
+```cpp
+int maxSubArray(vector<int>& nums) {
+       int res = INT_MIN;
+       for(int i = 0, last = 0; i < nums.size(); i++){
+           last = nums[i] + max(last, 0);//当前为负数肯定i就不会加进来了
+           res = max(res, last);
+       }
+       return res;
+    }
+
+
+```
 
 ## 最长上升子序列
 

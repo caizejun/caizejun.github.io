@@ -50,3 +50,33 @@ categories:
         return res;
     }
    ```
+
+## Leetcode41 缺失的第一个正整数
+
+给一个未排序数组，找到数组中缺失的最小正整数</br>
+
+解法：将数组中的所有正整数尽可能移动到对应的角标下(角标和数字相同)，遍历一次数组
+&emsp;移动完成后，再从前往后遍历，看哪个角标和该位置上的数不相同，则是所求的数
+
+```cpp
+int firstMissingPositive(vector<int>& nums) {
+        int n = nums.size();
+        if(n == 0) return 1;
+        for(auto& c : nums)
+            if(c != INT_MIN)c--;//做这个操作是为了下面的比较方便
+        for(int i = 0 ;i < n; i++){
+            while(nums[i] < n && nums[i] >= 0 && nums[nums[i]] != nums[i]){
+                swap(nums[i], nums[nums[i]]);
+            }
+            pri(nums);
+        }
+        for(int i = 0; i < n ; i++){
+            if(nums[i] != i)
+                return i+1;
+        }
+        return n;
+    }
+
+
+
+```
