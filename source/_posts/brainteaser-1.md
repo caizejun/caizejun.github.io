@@ -65,7 +65,7 @@ int firstMissingPositive(vector<int>& nums) {
         for(auto& c : nums)
             if(c != INT_MIN)c--;//做这个操作是为了下面的比较方便
         for(int i = 0 ;i < n; i++){
-            while(nums[i] < n && nums[i] >= 0 && nums[nums[i]] != nums[i]){
+            while(nums[i] < n && nums[i] >= 0 && nums[i] != i nums[nums[i]] != nums[i]){
                 swap(nums[i], nums[nums[i]]);
             }
             pri(nums);
@@ -74,7 +74,7 @@ int firstMissingPositive(vector<int>& nums) {
             if(nums[i] != i)
                 return i+1;
         }
-        return n;
+        return n+1;
     }
 
 
