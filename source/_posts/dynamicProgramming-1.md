@@ -81,9 +81,31 @@ for(int i=0; i<n ;i++){
         }
     }
     return dp[0][0]
-
-
    ```
+
+## Leetcode44通配符匹配
+
+```cpp
+bool isMatch(string s, string p) {
+        int n = s.size(), m = p.size();
+        vector<vector<bool>> dp(n+1, vector<bool>(m+1,false));
+        dp[n][m] = true;
+        for(int i = n; i >=0; i--){
+            for(int j = m-1; j>=0; j--){//边界是匹配空字符
+                bool firtsmathch = i < n && (s[i] == p[j] || p[j] == '?');//
+                if(p[j] != '*'){//不能匹配空字符边界，用firstmatch屏蔽掉了
+                    dp[i][j] =  firtsmathch && dp[i+1][j+1];
+                }else{
+                               //*不需要起作用   //需要起作用
+                    dp[i][j] = dp[i][j+1] || ((i + 1 <= n) && dp[i+1][j]);    
+                                            //这里也是边界不好搞          
+
+                }
+            }
+        }
+        return dp[0][0];
+    }
+```
 
 ## 编辑距离
 
