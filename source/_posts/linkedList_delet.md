@@ -7,6 +7,9 @@ categories:
 - linkedList
 ---
 
+删除操作基本都是找要删除的节点的前一个节点，ptr -> next = ptr -> next -> next
+
+
 ## 删除链表倒数第k个节点
 
 ### 思路
@@ -32,3 +35,18 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 }
 ```
 
+## Leetcode203移除链表元素
+
+这种相当于分类，把等于给定元素和不等于给定元素的做一个分类
+
+```cpp
+ListNode* removeElements(ListNode* head, int val) {
+        ListNode *dummy = new ListNode(-1);
+        for(auto p = dummy; p ;p = p -> next ){
+            while(head && head -> val == val)head = head->next;
+            p ->next = head ;
+            if(head)head = head ->next;
+        }
+        return dummy -> next;
+    }
+```
