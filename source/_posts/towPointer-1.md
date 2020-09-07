@@ -13,12 +13,26 @@ categories:
 
 ### 思路
 
-双指针，用index来标定新数组的结尾位置，那么index肯定要初始化为k-1</br>
-index-k+1来进行标定新数组最后一个元素的开始位置,
-从index位置开始枚举 新元素与nums[index-k+1]做比较，如果不同则加入</br>
+双指针，用back来标定新数组的结尾位置，那么back肯定要初始化为k-1</br>
+back-k+1来进行标定新数组最后一个元素的开始位置,
+从index位置开始枚举 新元素与nums[back-k+1]做比较，如果不同则加入</br>
+
+## Leetcode75颜色分类
+
+```cpp
+//i用来遍历数组，会保证[0~j)都是0,[j,i)都是1,[i,end)都是2
+    void sortColors(vector<int>& nums) {
+        for(int i = 0, j = 0, k = nums.size() - 1; i <= k; ){
+            if(nums[i] == 0)swap(nums[i++], nums[j++]);
+            else if(nums[i] == 2)swap(nums[k--], nums[i]);
+            else i++;
+            cout<<"i:"<<i<<"   j:"<<j<<"    k:"<<k<<endl;
+        }
+    }
 
 
 
+```
 
 ## 三数之和 Leetcode15
 

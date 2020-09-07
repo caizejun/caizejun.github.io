@@ -35,6 +35,8 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 }
 ```
 
+
+
 ## Leetcode203移除链表元素
 
 这种相当于分类，把等于给定元素和不等于给定元素的做一个分类

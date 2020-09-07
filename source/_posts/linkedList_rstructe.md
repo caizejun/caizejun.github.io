@@ -56,33 +56,3 @@ func swapPairs(head *ListNode) *ListNode {
     }
     return dummy ->next;
 ```
-
-## Leetcode61旋转链表
-
-k 可能很大，所以我们令 k=k%n，n是链表长度。
-
-创建两个指针first, second，分别指向头结点，先让first向后移动 k 个位置，然后first和second同时向后移动，直到first走到链表最后一个元素。此时first指向链表末尾，second指向分界点。然后我们把链表从分界点处断开，然后把后半段接在前半段前面即可。
-
-```cpp
-    ListNode* rotateRight(ListNode* head, int k) {
-        if(!head)return nullptr;
-        int len = 0;
-        ListNode *p = head;
-        while(p)p = p -> next,len++;
-        k %= len;
-        if(!k) return head;
-        ListNode *fast = head, *slow = head;
-        while(k-- && fast)fast = fast -> next;
-        while(fast -> next){
-            fast = fast -> next;
-            slow = slow -> next;
-        }
-        fast -> next = head;
-        head = slow -> next;
-        slow -> next = nullptr;
-        return head;
-    }
-
-
-
-```
