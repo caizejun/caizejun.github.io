@@ -1,64 +1,41 @@
 ---
-title: dp-1
-data: 2020-7-30
+title: dp_string
+date: 2020-09-23 15:04:25
+tags:
 categories:
 - 算法题
 - DynamicProgramming
 ---
 
-## Leetcode53最大公共子序(连续的)列和
+## Leetcode115 不同的子序列
 
-这个最巧妙的是对边界的处理吧，还有怎么用滚动数组
+(动态规划) O(nm)
+可以换一种考虑问题的方式：用 S 中的字符，按顺序匹配 T 中的字符，问有多少种方式可以匹配完 TT 中的所有字符。
+
+可以用动态规划来做：
+f[i][j] 表示用 S 的前 i 个字符，能匹配完 T 的前 j 个字符的方案数。
+初始化：因为 SS 可以从任意一个字符开始匹配，所以 f[i][0]=1,∀i∈[0,len(S)]
+状态转移：
+如果 S[i−1]≠T[j−1]，则 S[i−1] 不能匹配 T[j−1]，所以 f[i][j]=f[i−1][j]</br>
+如果 S[i−1]=T[j−1]，则 S[i−1] 既可以匹配 T[j−1]，也可以不匹配 T[j−1]，所以 f[i][j]=f[i−1][j]+f[i−1][j−1]</br>
+时间复杂度分析：假设 S 的长度是 n，T 的长度是 m，则共有 nm个状态，状态转移的复杂度是 O(1)，所以总时间复杂度是 O(nm)。
 
 ```cpp
-int maxSubArray(vector<int>& nums) {
-       int res = INT_MIN;
-       for(int i = 0, last = 0; i < nums.size(); i++){
-           last = nums[i] + max(last, 0);//当前为负数肯定i就不会加进来了
-           res = max(res, last);
+ //用S里面的字符去匹配T里面的字符
+    int numDistinct(string s, string t) {
+       int s_size = s.size(), t_size = t.size();
+       s = ' '+ s, t = ' ' + t;
+       vector<vector<long long>> dp(s_size + 1, vector<long long>(t_size + 1));
+       for(int i = 0; i <= s_size; i++)dp[i][0] = 1;
+       for(int i = 1; i <= s_size; i++){
+           for(int j = 1; j <= t_size; j++){
+               dp[i][j] = dp[i - 1][j];
+               if(s[i] == t[j]) dp[i][j] += dp[i - 1][j - 1];
+           }
        }
-       return res;
+       return dp[s_size][t_size];
     }
-
-
 ```
-
-## 最长上升子序列
-
-思路：dp[i]    状态表示以下标i结尾的子串，属性为该字串的最长上升子序列
-
-```cpp
-for(int i=0; i<n ;i++){
-    dp[i]=1;
-    for(int j=0 ;j<i ;j++)
-        if(nums[j]<nums[i])
-            dp[i]=max(dp[i],dp[j]+1)
-}
-```
-
-## 最长公共子序列
-
-1. 状态表示：dp[i][j] 串A中以i下标结尾的字串和串B中以j下标为结尾的子串 两个字串公共子序列的最大长度
-2. 转移方法：
-   2.1 如果A[i]与B[j]不相等，
-
-   `dp[i][j]=max(dp[i-1][j],dp[i][j-1])`
-   2.2 如果A[i]与B[j]相等，
-
-   `dp[i][j]=max(dp[i-1][j-1]+1,dp[i][j])`
-3. 代码
-
-   ```c++
-   dp[0][0]=0;
-   for(int i=1 ;i<=n ; i++)
-        for(int j=1 ;j<=m ;j++){
-            if(A[i]==B[j])
-                dp[i][j]=dp[i-1][j-1]+1;
-            else{
-                dp[i][j]=max(dp[i-1][j],dp[i][j-1])
-            }
-        }
-   ```
 
 ## 正则表达式匹配
 
@@ -97,8 +74,8 @@ bool isMatch(string s, string p) {
                     dp[i][j] =  firtsmathch && dp[i+1][j+1];
                 }else{
                                //*不需要起作用   //需要起作用
-                    dp[i][j] = dp[i][j+1] || ((i + 1 <= n) && dp[i+1][j]);    
-                                            //这里也是边界不好搞          
+                    dp[i][j] = dp[i][j+1] || ((i + 1 <= n) && dp[i+1][j]);
+                                            //这里也是边界不好搞
 
                 }
             }

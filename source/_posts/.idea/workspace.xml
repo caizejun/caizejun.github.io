@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c166a6ce-b603-444e-8497-5b228d4e8d90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/binaryTree-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/binaryTree-1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brainteaser-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/brainteaser-1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dynamicProgramming-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/dynamicProgramming-1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stack.md" beforeDir="false" afterPath="$PROJECT_DIR$/stack.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/string-1.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../themes/next/_config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

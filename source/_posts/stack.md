@@ -44,3 +44,64 @@ categories:
         return res;
     }
 ```
+
+## Leetcode85最大矩形
+
+经典单调栈</br>
+
+首先算是一个模板，给一个数组，每个元素代表在该坐标上的高度，求一个最大的矩阵
+
+```cpp
+int largestRectangleArea(vector<int>& heights) {
+        if(!heights.size())return 0;
+        int n = heights.size();
+        vector<int> left(n), right(n);
+        stack<int> stk;
+        for(int i = 0; i < n ; i++){
+            while(stk.size() && heights[i] <= heights[stk.top()])stk.pop();
+            if(stk.size())left[i] = stk.top();
+            else left[i] = -1;
+            stk.push(i);
+        }
+        while(stk.size())stk.pop();
+        for(int i = n - 1; i >=0; i--){
+            while(stk.size() && heights[i] <= heights[stk.top()])stk.pop();
+            if(stk.size())right[i] = stk.top();
+            else right[i] = n;
+            stk.push(i);
+        }
+        int res = INT_MIN;
+        for(int i = 0; i < n; i++){
+            res = max(res, heights[i] * (right[i] - left[i] - 1));
+        }
+        return res;
+    }
+```
+
+然后是在01矩阵里找出最大的1矩阵(全部由1构成)</br>
+
+思路：将这个矩阵拆分开来，每一行都当作上一个问题的参数，求出来最大值就行了。</br>
+问题的关键是求出来每一行的高度
+
+```cpp
+int maximalRectangle(vector<vector<char>>& matrix) {
+        if(!matrix.size() || !matrix[0].size())return 0;
+        int n = matrix.size(), m = matrix[0].size();
+        //以i,j为底的矩形的高度
+        vector<vector<int>> h(n, vector<int>(m));
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(matrix[i][j] == '1'){
+                    if(i)h[i][j] = 1 + h[i-1][j];
+                    else h[i][j] = 1;
+                }
+
+            }
+        }
+        int res = 0;
+        for(int i = 0; i < n; i++){
+            res = max(res, largestRectangleArea(h[i]));
+        }
+        return res;
+    }
+```

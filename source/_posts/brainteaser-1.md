@@ -75,8 +75,30 @@ int firstMissingPositive(vector<int>& nums) {
                 return i+1;
         }
         return n+1;
-    }
+}
+```
 
+## Leetcode89 格雷编码
+
+格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个位数的差</br>
+设第K+1个编码序列为S(k+1), 则S(k+1)可由Sk 推出来</br>
+比如:</br>
+k = 2 编码序列为00 01 11 10</br>
+则 k = 3, 可以先将 k = 2 的序列先做对称，得到 00 01 11 10 | 10 11 01 00</br>
+再在前半部分后面补0, 后半部分补1,得到如下</br>
+>000 010 110 100 | 101 111 011 001
+
+```cpp
+vector<int> grayCode(int n) {
+        vector<int> res(1, 0);
+        while(n--){
+            for(int i = res.size() - 1; i >= 0; i--){
+                res[i] *= 2; //补0只要乘以2
+                res.push_back(res[i] + 1);
+            }
+        }
+        return res;
+    }
 
 
 ```
