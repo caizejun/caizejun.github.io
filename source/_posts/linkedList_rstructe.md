@@ -7,7 +7,29 @@ categories:
 - linkedList
 ---
 
-这类题目大同小异，都是枚举要反转的这一段的节点前一个节点
+
+## 常用的一些操作
+
+### 反转链表
+
+```cpp
+ListNode *reverse(ListNode* head){
+        ListNode *a=head,*b=head->next;
+        while(b){
+            ListNode *c=b->next;
+            b->next=a;
+            a=b;
+            b=c;
+        }
+        head->next=NULL;
+        return a;
+    }
+
+```
+
+
+
+
 
 ## Leetcode24两两交换链表中的节点
 
